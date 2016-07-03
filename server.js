@@ -22,7 +22,7 @@ if (process.env.NODE_ENV !== 'production') {
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-var port = 3000;
+var port = process.env.PORT || 3000;
 var mongo_username = process.env.mongo_username;
 var mongo_password = process.env.mongo_password;
 var mongoURL = 'mongodb://' + mongo_username + ':' + mongo_password + '@ds011775.mlab.com:11775/heroku_4ftg2lgr';
