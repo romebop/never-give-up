@@ -1,22 +1,30 @@
-var webpack = require('webpack');
-var webpackDevMiddleware = require('webpack-dev-middleware');
-var webpackHotMiddleware = require('webpack-hot-middleware');
-var config = require('./webpack.config');
 var bodyParser = require('body-parser');
 var mongo = require('mongodb').MongoClient;
 var assert = require('assert');
 var express = require('express');
 var app = new express();
+const path = require('path');
 
-var compiler = webpack(config);
-app.use(webpackDevMiddleware(compiler, { noInfo: true, publicPath: config.output.publicPath }));
-app.use(webpackHotMiddleware(compiler));
+app.use(express.static(path.join(__dirname + '/dist')));
+
+if (process.env.NODE_ENV !== 'production') {
+  console.log('@@@ we are in dev @@@');
+  var webpack = require('webpack');
+  var webpackDevMiddleware = require('webpack-dev-middleware');
+  var webpackHotMiddleware = require('webpack-hot-middleware');
+  var config = require('./webpack.dev.config');
+  
+  var compiler = webpack(config);
+  app.use(webpackDevMiddleware(compiler, { noInfo: true, publicPath: config.output.publicPath }));
+  app.use(webpackHotMiddleware(compiler));
+}
+
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 var port = 3000;
 
-var db, col;
+var db, col; // declare database and collection variables
 var mongoURL = 'mongodb://localhost/ngu';
 mongo.connect(mongoURL, function(err, database) {   
   if (err) throw err;
@@ -34,7 +42,7 @@ mongo.connect(mongoURL, function(err, database) {
 });
 
 app.get('/', function(req, res) {
-  res.sendFile(__dirname + '/index.html');
+  res.sendFile(path.join(__dirname + '/index.html'));
 });
 
 app.get('/data', function(req, res) {
