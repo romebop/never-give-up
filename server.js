@@ -3,12 +3,12 @@ var mongo = require('mongodb').MongoClient;
 var assert = require('assert');
 var express = require('express');
 var app = new express();
-const path = require('path');
+var path = require('path');
 
 app.use(express.static(path.join(__dirname + '/dist')));
 
+console.log(`@@@ we are in ${process.env.NODE_ENV} @@@`);
 if (process.env.NODE_ENV !== 'production') {
-  console.log('@@@ we are in dev @@@');
   var webpack = require('webpack');
   var webpackDevMiddleware = require('webpack-dev-middleware');
   var webpackHotMiddleware = require('webpack-hot-middleware');
