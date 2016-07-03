@@ -7,7 +7,7 @@ var path = require('path');
 
 app.use(express.static(path.join(__dirname + '/dist')));
 
-console.log(`@@@ we are in ${process.env.NODE_ENV} @@@`);
+console.log(`@@@ we are in NODE_ENV: ${process.env.NODE_ENV} @@@`);
 if (process.env.NODE_ENV !== 'production') {
   var webpack = require('webpack');
   var webpackDevMiddleware = require('webpack-dev-middleware');
