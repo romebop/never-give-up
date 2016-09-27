@@ -19,7 +19,7 @@ class Button extends Component {
         </div>
         
         <div id='today'>
-          Continued <b>{today}</b> times today.<br/>
+          Rejected <b>{today}</b> times today.<br/>
         </div>
         
         <div id='total'>
