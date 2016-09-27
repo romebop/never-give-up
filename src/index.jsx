@@ -11,7 +11,6 @@ const rootEl = document.getElementById('root');
 
 function render() {
   ReactDOM.render(
-
     <Button
 
       total={store.getState().total}
@@ -35,7 +34,7 @@ function render() {
             today: data.today,
           });
         });
-      }}
+    }}
 
     />,
     
