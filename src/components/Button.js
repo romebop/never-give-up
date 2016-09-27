@@ -10,7 +10,7 @@ class Button extends Component {
   }
 
   render() {
-    const { total, today, onPress, onReset } = this.props;
+    const { total, today, best, onPress, onReset } = this.props;
     return (
       <div id='container'>
         
@@ -23,7 +23,7 @@ class Button extends Component {
         </div>
         
         <div id='total'>
-          {total} times total.
+          All time best: {best}. {total} times total. 
         </div>
         
         <div id='new' onClick={onReset}>

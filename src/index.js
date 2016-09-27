@@ -15,6 +15,7 @@ function render() {
 
       total={store.getState().total}
       today={store.getState().today}
+      best={store.getState().best}
 
       onPress={() => {
         store.dispatch({ type: 'PRESS' });
@@ -32,6 +33,7 @@ function render() {
             type: 'RECEIVE',
             total: data.total,
             today: data.today,
+            best: data.best,
           });
         });
     }}

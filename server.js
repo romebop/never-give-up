@@ -7,17 +7,17 @@ var path = require('path');
 
 app.use(express.static(path.join(__dirname + '/dist')));
 
-console.log(`@@@ we are in NODE_ENV: ${process.env.NODE_ENV} @@@`);
-if (process.env.NODE_ENV !== 'production') {
-  var webpack = require('webpack');
-  var webpackDevMiddleware = require('webpack-dev-middleware');
-  var webpackHotMiddleware = require('webpack-hot-middleware');
-  var config = require('./webpack.dev.config');
+// console.log(`@@@ we are in NODE_ENV: ${process.env.NODE_ENV} @@@`);
+// if (process.env.NODE_ENV !== 'production') {
+//   var webpack = require('webpack');
+//   var webpackDevMiddleware = require('webpack-dev-middleware');
+//   var webpackHotMiddleware = require('webpack-hot-middleware');
+//   var config = require('./webpack.dev.config');
   
-  var compiler = webpack(config);
-  app.use(webpackDevMiddleware(compiler, { noInfo: true, publicPath: config.output.publicPath }));
-  app.use(webpackHotMiddleware(compiler));
-}
+//   var compiler = webpack(config);
+//   app.use(webpackDevMiddleware(compiler, { noInfo: true, publicPath: config.output.publicPath }));
+//   app.use(webpackHotMiddleware(compiler));
+// }
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
