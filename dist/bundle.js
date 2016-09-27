@@ -20746,9 +20746,9 @@
 	          { id: 'total' },
 	          'All time best: ',
 	          best,
-	          '. ',
+	          '. Total times: ',
 	          total,
-	          ' times total.'
+	          '.'
 	        ),
 	        _react2.default.createElement(
 	          'div',

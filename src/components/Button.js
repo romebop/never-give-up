@@ -23,7 +23,7 @@ class Button extends Component {
         </div>
         
         <div id='total'>
-          All time best: {best}. {total} times total. 
+          All time best: {best}. Total times: {total}. 
         </div>
         
         <div id='new' onClick={onReset}>
