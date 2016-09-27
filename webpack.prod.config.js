@@ -5,13 +5,17 @@ module.exports = {
   devtool: 'source-map',
 
   entry: [
-    './src/index'
+    './src'
   ],
 
   output: {
     path: path.join(__dirname, '/dist'),
     filename: 'bundle.js',
     publicPath: '/dist/'
+  },
+
+  resolve: {
+    extensions: ['', '.js', '.jsx']
   },
 
   plugins: [
@@ -32,15 +36,13 @@ module.exports = {
   module: {
     loaders: [
       {
-        test: /\.js$/,
+        test: /\.jsx?$/,
         loaders: [ 'babel' ],
-        exclude: /node_modules/,
-        include: __dirname
+        exclude: /node_modules/
       },
       {
         test: /\.css?$/,
-        loaders: [ 'style', 'css' ],
-        include: __dirname
+        loaders: [ 'style', 'css' ]
       }
     ]
   }
